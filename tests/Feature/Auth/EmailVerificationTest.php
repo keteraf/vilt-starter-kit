@@ -33,6 +33,23 @@ test('email can be verified', function () {
     $response->assertRedirect(route('dashboard', absolute: false) . '?verified=1');
 });
 
+test('already verified email redirects to dashboard', function () {
+    $user = User::factory()->create();
+
+    Event::fake();
+
+    $verificationUrl = URL::temporarySignedRoute(
+        'verification.verify',
+        now()->addMinutes(60),
+        ['id' => $user->id, 'hash' => sha1($user->email)]
+    );
+
+    $response = $this->actingAs($user)->get($verificationUrl);
+
+    Event::assertNotDispatched(Verified::class);
+    $response->assertRedirect(route('dashboard', absolute: false) . '?verified=1');
+});
+
 test('email is not verified with invalid hash', function () {
     $user = User::factory()->unverified()->create();
 
