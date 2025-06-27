@@ -1,11 +1,10 @@
 {
     "schema": "https://getcomposer.org/schema.json",
-    "name": "laravel/vue-starter-kit",
+    "name": "keteraf/keteraf-starter-kit",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
+    "description": "My own starter kit based on VILT stack.",
     "keywords": [
-        "laravel",
-        "framework"
+        "laravel", "framework", "starter-kit", "vilt", "tools"
     ],
     "license": "MIT",
     "require": {
@@ -18,6 +17,8 @@
         "ext-pdo": "*"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.15",
+        "barryvdh/laravel-ide-helper": "^3.5",
         "fakerphp/faker": "^1.23",
         "larastan/larastan": "^3.0",
         "laravel/pail": "^1.2.2",
@@ -47,7 +48,8 @@
             "@php artisan package:discover --ansi"
         ],
         "post-update-cmd": [
-            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force",
+            "@php artisan ide-helper:generate"
         ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
@@ -71,7 +73,7 @@
         "test:refactor": "rector --dry-run",
         "test:lint": "pint --test",
         "test:types": "phpstan analyse --ansi",
-        "test:unit": "pest --colors=always --coverage --parallel",
+        "test:unit": "pest --colors=always --parallel --coverage --min=100",
         "test": [
             "@php artisan config:clear --ansi",
             "@test:refactor",
