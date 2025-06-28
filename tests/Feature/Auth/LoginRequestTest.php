@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-use App\Http\Requests\Auth\LoginRequest;
 use App\Models\User;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Support\Facades\Event;

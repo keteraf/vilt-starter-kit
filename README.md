@@ -19,7 +19,7 @@ An enriched laravel starter kit based on the VILT stack (Vue, Inertia, Laravel, 
 
 ## 🚦 Requirements
 
-- PHP 8.2 or higher
+- PHP 8.4 or higher
 - Composer
 - Node.js (v18+) and npm
 
@@ -31,13 +31,9 @@ laravel new my-app --using=keteraf/keteraf-starter-kit
 
 # Navigate to the project directory
 cd my-app
-
-# Install JavaScript dependencies
-npm install
-
-# Build assets
-npm run build
 ```
+
+All dependencies will be automatically installed and assets will be built during the installation process.
 
 ## 🏃‍♂️ Development
 
@@ -104,7 +100,7 @@ The starter kit follows the standard Laravel project structure with some additio
 
 This starter kit enforces strict coding standards:
 
-- PHP 8.2+ features
+- PHP 8.4+ features
 - Strict types and array shapes via PHPStan
 - Pint for PHP code style
 - ESLint and Prettier for JavaScript/Vue code style
