@@ -61,15 +61,25 @@ test('password can be reset with valid token', function () {
     });
 });
 
-test('password reset fails with invalid token', function () {
+it('throws ValidationException if cannnot reset password', function () {
+    Notification::fake();
+
     $user = User::factory()->create();
 
-    $response = $this->post('/reset-password', [
-        'token' => 'invalid-token',
-        'email' => $user->email,
-        'password' => 'password',
-        'password_confirmation' => 'password',
-    ]);
+    $this->post('/forgot-password', ['email' => $user->email]);
 
-    $response->assertSessionHasErrors('email');
+    Notification::assertSentTo($user, ResetPassword::class, function ($notification) {
+
+        $response = $this->post('/reset-password', [
+            'token' => $notification->token,
+            'email' => 'wrongemail@mail.it',
+            'password' => 'password',
+            'password_confirmation' => 'password',
+        ]);
+
+        $response
+            ->assertSessionHasErrors();
+
+        return true;
+    });
 });

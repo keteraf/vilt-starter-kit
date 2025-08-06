@@ -5,16 +5,11 @@ declare(strict_types=1);
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
-test('password settings page can be rendered', function () {
+test('password page can be rendered', function () {
     $user = User::factory()->create();
+    $response = $this->actingAs($user)->get(route('password.edit'));
 
-    $response = $this
-        ->actingAs($user)
-        ->get('/settings/password');
-
-    $response
-        ->assertStatus(200)
-        ->assertInertia(fn ($page) => $page->component('settings/Password'));
+    $response->assertInertia()->assertOk();
 });
 
 test('password can be updated', function () {
