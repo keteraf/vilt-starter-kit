@@ -6,9 +6,12 @@ import { Head, Link } from '@inertiajs/vue3';
     <Head title="Welcome">
         <link rel="preconnect" href="https://rsms.me/" />
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+            rel="stylesheet"
+        />
     </Head>
     <div class="flex min-h-screen flex-col items-center bg-[#FDFDFC] p-6 text-[#1b1b18] lg:justify-center lg:p-8 dark:bg-[#0a0a0a]">
         <header class="mb-6 w-full max-w-[335px] text-sm not-has-[nav]:hidden lg:max-w-4xl">
@@ -41,7 +44,7 @@ import { Head, Link } from '@inertiajs/vue3';
                 <div
                     class="flex-1 rounded-br-lg rounded-bl-lg bg-white p-6 pb-12 leading-[20px] shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)] lg:rounded-tl-lg lg:rounded-br-none lg:p-20 dark:bg-[#161615] dark:text-[#EDEDEC] dark:shadow-[inset_0px_0px_0px_1px_#fffaed2d]"
                 >
-                    <h1 class="mb-4 font-medium text-lg">KETERAF STARTER KIT</h1>
+                    <h1 class="mb-4 text-lg font-medium">KETERAF STARTER KIT</h1>
                     <p class="mb-10 text-lg text-[#706f6c] dark:text-[#A1A09A]">
                         A minimal VILT starter kit with already integrated tools like phpstan, rector, debugbar and more...
                     </p>
@@ -64,7 +67,6 @@ import { Head, Link } from '@inertiajs/vue3';
                     <svg
                         class="w-full max-w-none translate-y-0 text-[#F53003] opacity-100 transition-all duration-750 dark:text-[#F61500] starting:translate-y-6 starting:opacity-0"
                         viewBox="0 0 438 104"
-                        fill="none"
                         xmlns="http://www.w3.org/2000/svg"
                     >
                         <path d="M17.2036 -3H0V102.197H49.5189V86.7187H17.2036V-3Z" fill="currentColor" />
@@ -90,7 +92,6 @@ import { Head, Link } from '@inertiajs/vue3';
                     <svg
                         class="relative -mt-[4.9rem] -ml-8 w-[448px] max-w-none lg:-mt-[6.6rem] lg:ml-0 dark:hidden"
                         viewBox="0 0 440 376"
-                        fill="none"
                         xmlns="http://www.w3.org/2000/svg"
                     >
                         <g class="translate-y-0 opacity-100 transition-all delay-300 duration-750 starting:translate-y-4 starting:opacity-0">
@@ -410,7 +411,6 @@ import { Head, Link } from '@inertiajs/vue3';
                     <svg
                         class="relative -mt-[4.9rem] -ml-8 hidden w-[448px] max-w-none lg:-mt-[6.6rem] lg:ml-0 dark:block"
                         viewBox="0 0 440 376"
-                        fill="none"
                         xmlns="http://www.w3.org/2000/svg"
                     >
                         <g class="translate-y-0 opacity-100 transition-all delay-300 duration-750 starting:translate-y-4 starting:opacity-0">
