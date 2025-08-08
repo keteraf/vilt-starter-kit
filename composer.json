@@ -1,6 +1,6 @@
 {
     "schema": "https://getcomposer.org/schema.json",
-    "name": "keteraf/keteraf-starter-kit",
+    "name": "keteraf/vilt-starter-kit",
     "type": "project",
     "description": "My own starter kit based on VILT stack.",
     "keywords": [
@@ -99,6 +99,6 @@
             "php-http/discovery": true
         }
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "prefer-stable": true
 }
