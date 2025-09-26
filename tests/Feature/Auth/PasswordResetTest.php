@@ -3,7 +3,9 @@
 declare(strict_types=1);
 
 use App\Models\User;
+use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Auth\Notifications\ResetPassword;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Notification;
 
 test('reset password link screen can be rendered', function () {
@@ -79,6 +81,30 @@ it('throws ValidationException if cannnot reset password', function () {
 
         $response
             ->assertSessionHasErrors();
+
+        return true;
+    });
+});
+
+test('password reset event is dispatched', function () {
+    Event::fake();
+    Notification::fake();
+
+    $user = User::factory()->create();
+
+    $this->post('/forgot-password', ['email' => $user->email]);
+
+    Notification::assertSentTo($user, ResetPassword::class, function ($notification) use ($user) {
+        $this->post('/reset-password', [
+            'token' => $notification->token,
+            'email' => $user->email,
+            'password' => 'password',
+            'password_confirmation' => 'password',
+        ]);
+
+        Event::assertDispatched(PasswordReset::class, function ($event) use ($user) {
+            return $event->user->id === $user->id;
+        });
 
         return true;
     });

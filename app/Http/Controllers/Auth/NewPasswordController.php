@@ -5,9 +5,8 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Auth\Events\PasswordReset;
-use Illuminate\Contracts\Auth\Authenticatable;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -18,7 +17,7 @@ use Illuminate\Validation\ValidationException;
 use Inertia\Inertia;
 use Inertia\Response;
 
-final class NewPasswordController extends Controller
+class NewPasswordController extends Controller
 {
     /**
      * Show the password reset page.
@@ -38,21 +37,19 @@ final class NewPasswordController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        $request->validate([
+        /** @var array{token: string, email: string, password: string} $validated */
+        $validated = $request->validate([
             'token' => 'required',
             'email' => 'required|email',
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        // Here we will attempt to reset the user's password. If it is successful we
-        // will update the password on an actual user model and persist it to the
-        // database. Otherwise we will parse the error and return the response.
+        /** @var string $status */
         $status = Password::reset(
             $request->only('email', 'password', 'password_confirmation', 'token'),
-            /** @var Authenticatable $user */
-            function (Authenticatable $user) use ($request): void {
+            function (User $user, string $password): void {
                 $user->forceFill([
-                    'password' => Hash::make($request->str('password')->toString()),
+                    'password' => Hash::make($password),
                     'remember_token' => Str::random(60),
                 ])->save();
 
@@ -68,7 +65,7 @@ final class NewPasswordController extends Controller
         }
 
         throw ValidationException::withMessages([
-            'email' => [is_string($status) ? __($status) : $status],
+            'email' => [__($status)],
         ]);
     }
 }

@@ -4,12 +4,11 @@ declare(strict_types=1);
 
 namespace App\Http\Middleware;
 
-use Illuminate\Foundation\Inspiring;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 use Tighten\Ziggy\Ziggy;
 
-final class HandleInertiaRequests extends Middleware
+class HandleInertiaRequests extends Middleware
 {
     /**
      * The root template that's loaded on the first page visit.
@@ -39,14 +38,9 @@ final class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
-        /** @var string $randomQuote */
-        $randomQuote = Inspiring::quotes()->random();
-        [$message, $author] = str($randomQuote)->explode('-');
-
         return [
             ...parent::share($request),
             'name' => config('app.name'),
-            'quote' => ['message' => mb_trim((string) $message), 'author' => mb_trim((string) $author)],
             'auth' => [
                 'user' => $request->user(),
             ],
