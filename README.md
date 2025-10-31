@@ -1,4 +1,4 @@
-# 🚀 Keteraf Starter Kit
+# 🚀 Keteraf VILT Starter Kit
 
 An enriched laravel starter kit based on the VILT stack (Vue, Inertia, Laravel, Tailwind CSS).
 
@@ -8,14 +8,12 @@ An enriched laravel starter kit based on the VILT stack (Vue, Inertia, Laravel, 
 - **Vue 3** - The progressive JavaScript framework with Composition API
 - **Inertia.js** - The modern approach to building server-driven single-page apps
 - **Tailwind CSS 4** - Utility-first CSS framework for rapid UI development
-- **TypeScript** - Type safety for your JavaScript code
-- **Vite** - Next generation frontend tooling for lightning-fast HMR
 - **Pest PHP** - An elegant PHP testing framework with a focus on simplicity
 - **Pint** - An opinionated PHP code style fixer for Laravel
 - **PHPStan** - PHP Static Analysis Tool for finding errors in your code
+- **Laravel MCP** - A simple and elegant way for AI clients to interact with your Laravel application
 - **Rector** - Instant upgrades and automated refactoring of your PHP code
 - **ESLint & Prettier** - Keep your code clean and consistent
-- **Ziggy** - Use your Laravel named routes in JavaScript
 
 ## 🚦 Requirements
 
@@ -27,7 +25,7 @@ An enriched laravel starter kit based on the VILT stack (Vue, Inertia, Laravel, 
 
 ```bash
 # Create a new Laravel application using this starter kit
-laravel new my-app --using=keteraf/keteraf-starter-kit
+laravel new my-app --using=keteraf/vilt-starter-kit
 
 # Navigate to the project directory
 cd my-app
